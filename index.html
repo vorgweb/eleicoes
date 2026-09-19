@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Urna Simulada</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="app-shell">
+		<header class="topbar">
+			<div class="brand-mark" aria-hidden="true">V</div>
+			<div>
+				<p class="eyebrow">simulador offline</p>
+				<h1>Urna de bolso</h1>
+			</div>
+			<div class="status-pill"><span></span> sessão local</div>
+		</header>
+
+		<section class="intro-row">
+			<div>
+				<p class="kicker">ELEIÇÃO DEMONSTRATIVA / 2026</p>
+				<h2>Seu voto,<br><em>seu registro.</em></h2>
+			</div>
+			<p class="intro-copy">Uma experiência de votação simples para testar candidatos definidos por você.</p>
+		</section>
+
+		<div class="workspace">
+			<section class="voting-card" aria-labelledby="voting-title">
+				<div class="voter-identity">
+					<label for="voter-name">Seu nome</label>
+					<input id="voter-name" type="text" maxlength="80" autocomplete="name" placeholder="Digite seu nome para começar" required>
+				</div>
+				<div class="card-heading">
+					<div>
+						<span class="step-label">ETAPA <strong id="step-number">01</strong></span>
+						<h3 id="voting-title">Escolha seu candidato</h3>
+					</div>
+					<div class="cargo-select-wrap">
+						<label for="cargo-select">Cargo</label>
+						<select id="cargo-select"></select>
+					</div>
+				</div>
+
+				<div class="ballot" aria-live="polite">
+					<div class="number-display" id="number-display">&nbsp;</div>
+					<div class="candidate-preview" id="candidate-preview">
+						<span class="preview-icon">?</span>
+						<div>
+							<strong>Digite o número</strong>
+							<p>Use o teclado para localizar um candidato</p>
+						</div>
+					</div>
+					<p class="ballot-message" id="ballot-message">O número aparece aqui conforme você digita.</p>
+				</div>
+
+				<div class="keypad" aria-label="Teclado numérico">
+					<button class="key" data-number="1">1</button>
+					<button class="key" data-number="2">2</button>
+					<button class="key" data-number="3">3</button>
+					<button class="key" data-number="4">4</button>
+					<button class="key" data-number="5">5</button>
+					<button class="key" data-number="6">6</button>
+					<button class="key" data-number="7">7</button>
+					<button class="key" data-number="8">8</button>
+					<button class="key" data-number="9">9</button>
+					<span></span>
+					<button class="key" data-number="0">0</button>
+					<span></span>
+				</div>
+
+				<div class="ballot-actions">
+					<button class="action-button white" id="blank-button">Voto em branco</button>
+					<button class="action-button clear" id="clear-button">Corrigir</button>
+					<button class="action-button confirm" id="confirm-button" disabled>Confirmar voto <span>↵</span></button>
+				</div>
+			</section>
+
+			<aside class="side-panel">
+				<section class="results-panel">
+					<div class="panel-title-row">
+						<div>
+							<p class="kicker">ACOMPANHAMENTO</p>
+							<h3>Apuração ao vivo</h3>
+						</div>
+						<span class="vote-count" id="total-votes">0 votos</span>
+					</div>
+					<div class="results-list" id="results-list"></div>
+					<div class="totals-row">
+						<span>Brancos <strong id="blank-count">0</strong></span>
+						<span>Nulos <strong id="null-count">0</strong></span>
+					</div>
+					<button class="reset-button" id="reset-button">Zerar apuração</button>
+				</section>
+
+			</aside>
+		</div>
+
+		<footer>Simulador educacional · Os dados ficam somente neste navegador</footer>
+	</main>
+	<div class="toast" id="toast" role="status"></div>
+	<script src="script.js"></script>
+</body>
+</html>
